@@ -1,0 +1,2 @@
+# WineCard
+Project «Electronic Sommelier»
