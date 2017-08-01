@@ -13,17 +13,17 @@ import { StackNavigator } from 'react-navigation';
 // =============================================
 class WineList extends React.Component {
     static navigationOptions = ({ navigation }) => ({
-        // title: `Wine List ${navigation.state.params.category}`,
+        title: `Wine List ${navigation.state.params.category}`,
     });
 
-    componentWillMount() {
-        var navigator = this.props.navigator;
-        console.info("------- Splash componentWillMount | navigator", this.props.navigator);
+    componentDidMount() {
+        // var navigator = this.props.navigator;
+        console.info("------- WineList componentDidMount | navigator", this.props.navigator);
     }
 
     nextScreen() {
         const { navigate } = this.props.navigation;
-        navigate('HomeScreen', {}); 
+        navigate('HomeScreen', {});
         // navigate('WineList', {});
     }
 
@@ -31,10 +31,10 @@ class WineList extends React.Component {
     render() {
         // The screen's current route is passed in to `props.navigation.state`:
         const { params } = this.props.navigation.state;
+        // console.info("------- WineList render | params", params);
         return (
             <View>
-                <Text> WineList</Text>
-                {/* <Text> WineList {params.category}</Text> */}
+                <Text> WineList • {params.category}</Text>
             </View>
         );
     }
