@@ -13,7 +13,7 @@ import { StackNavigator } from 'react-navigation';
 // =============================================
 class WineList extends React.Component {
     static navigationOptions = ({ navigation }) => ({
-        title: `Wine List ${navigation.state.params.category}`,
+        // title: `Wine List ${navigation.state.params.category}`,
     });
 
     componentWillMount() {
@@ -33,7 +33,8 @@ class WineList extends React.Component {
         const { params } = this.props.navigation.state;
         return (
             <View>
-                <Text> WineList {params.category}</Text>
+                <Text> WineList</Text>
+                {/* <Text> WineList {params.category}</Text> */}
             </View>
         );
     }

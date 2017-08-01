@@ -10,28 +10,50 @@ const wine_categories_select = require('./constants').constants.wine_categories_
 
 // =============================================
 class MenuItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            category: 'all',
-            select: false,
-            navigator: 'all',
-        };
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         category: 'all',
+    //         select: false,
+    //         navigation: null,
+    //     };
+    // }
 
+    // componentWillMount() {
+    //     //var navigator = this.props.navigator;
+         
+    //     this.setState({
+    //         category: this.props.category,
+    //         navigation: this.props.navigation
+    //     });
+    //    console.info("------- Home Screen componentWillMount | navigation", this.props.navigation);
+    // }
+
+    nextScreen() {
+
+        console.info('spalsh | nextScreen');
+        const navigateAction = NavigationActions.navigate({
+            routeName: 'WineList',
+            // params: {},
+            // action: NavigationActions.navigate({ routeName: 'SubProfileRoute' })
+            action: NavigationActions.navigate()
+        })
+
+        this.props.navigation.dispatch(navigateAction);
+    }
     goWineList() {
-        this.setState({
-            select: false,
-            category: this.props.category,
-            navigation: this.props.navigation
-        });
+        // this.setState({
+        //     select: false,
+        //     category: this.props.category,
+        //     navigation: this.props.navigation
+        // });
         // this.setState({ select: false, navigator: this.props.navigation });
         // console.log("goWineList | category:", this.props.category);
         //const { navigate } = this.props.navigation;
         //navigate('WineList', {category: 'all'});
         const navigateAction = NavigationActions.navigate({
-            //routeName: 'WineList',
-            routeName: 'Splash',
+            routeName: 'WineList',
+            //routeName: 'Splash',
             // params: { category: 'all' },
             // action: NavigationActions.navigate({ routeName: 'SubProfileRoute' })
             action: NavigationActions.navigate()
@@ -43,27 +65,30 @@ class MenuItem extends React.Component {
 
     render() {
 
-        const img = this.state.select
+        const img = false //this.state.select
             ? wine_categories_select[this.props.category]
             : wine_categories[this.props.category];
+        console.info("============= Props", this.props);
         return (
             < TouchableNativeFeedback
 
                 onPress={() => {
-                    this.setState({
+                    {/* this.setState({
                         select: true,
                         category: this.props.category,
                         navigation: this.props.navigation
-                    });
-                    console.info("onPress:", this.props.category, " | select: ", this.state.select);
+                    }); */}
+                    // console.info("onPress:", this.props.category, " | select: ", this.state.select);
                     //console.info("wine_categories:", wine_categories[this.props.category]);
                     //console.info("====  this.props.navigation:", this.props.navigation);
                     setTimeout(() => {
-                        this.goWineList();
+                        this.nextScreen();
+                        //this.goWineList();
                     }, 150);
                 }}
 
-                onPressOut={() => this.setState({ select: false })}>
+            // onPressOut={() => this.setState({ select: false })}
+            >
 
                 <View style={styles.menu_item}>
                     <Image
@@ -88,16 +113,17 @@ class HomeScreen extends React.Component {
     render() {
         console.info("======+====== wine_categories:", wine_categories);
         const { navigate } = this.props.navigation;
+        console.info("======+====== propsNavigation:", this.props.navigation);
         return (
             <View style={styles.container}>
                 <View style={styles.menu_container}>
                     <Image source={bg_img} style={{ width: 340, height: 470, resizeMode: 'contain', justifyContent: 'center' }}>
 
-                        <MenuItem category='red' select={true} />
-                        <MenuItem category='rose' select={false} />
-                        <MenuItem category='white' select={false} />
-                        <MenuItem category='champagne' select={false} />
-                        <MenuItem category='all' select={false} />
+                        <MenuItem category='red' select={true} navigation={navigate} />
+                        <MenuItem category='rose' select={false} navigation={navigate} />
+                        <MenuItem category='white' select={false} navigation={navigate} />
+                        <MenuItem category='champagne' select={false} navigation={navigate} />
+                        <MenuItem category='all' select={false} navigation={navigate} />
 
                     </Image>
                 </View>
@@ -153,11 +179,3 @@ const styles = StyleSheet.create({
 });
 
 module.exports = HomeScreen;
-
-{/* <View>
-                <Text>HomeScreen</Text>
-                <Button
-                    onPress={() => navigate('WineList', { user: 'Lucy' })}
-                    title="Chat with Lucy"
-                />
-            </View> */}
