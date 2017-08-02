@@ -22,9 +22,9 @@ class MenuItem extends React.Component {
     componentDidMount() {
         this.setState({
             category: this.props.category,
-            navigation: this.props.navigation
+            navigation: this.props.navigation,
         });
-        // console.info("------- Home Screen componentDidMount | props", this.navigation);
+        // console.info("------- MenuItem componentDidMount | _props", this.props._props);
     }
 
     nextScreen() {
@@ -43,7 +43,7 @@ class MenuItem extends React.Component {
         const img = this.state.select
             ? wine_categories_select[this.props.category]
             : wine_categories[this.props.category];
-        console.info("[] ============= Props.navigation", this.props.navigation);
+        // console.info("[] ============= Props.navigation", this.props.navigation);
         return (
             < TouchableNativeFeedback
 
@@ -71,13 +71,22 @@ class MenuItem extends React.Component {
 
 // =============================================
 class HomeScreen extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     // Nav options can be defined as a function of the screen's props:
     // static navigationOptions = ({ navigation }) => ({
     //     title: `Wine Card`,
     // });
+    componentDidMount() {
+        this.setState({
+            // _props: this.state.props._props
+        });
+        console.info("------- Home Screen componentDidMount | props", this.props._props);
+    }
 
     render() {
-        // console.info("++++ props.navigation:", this.props.navigation);
+        // console.info("++++ props:", this.props);
         return (
 
             <View style={styles.container}>

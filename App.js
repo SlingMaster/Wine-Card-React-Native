@@ -32,6 +32,21 @@ var WineList = require('./components/wine_list/WineList');
 
 
 // =======================================================
+const defaultProps = {
+  // _props: {
+  filters: {
+    category: "all",
+    grape: "All Grapes",
+    country: "World",
+    by_origin: false,
+    region: "",
+    // last_filter: "category",
+    shelf: false,
+    sorting: "addition_date"
+  },
+  last_filter: "category",
+  // }
+};
 
 const ExampleRoutes = {
   Splash: {
@@ -47,11 +62,11 @@ const ExampleRoutes = {
   WineList: {
     name: 'Drawer Example',
     description: 'Android-style drawer navigation',
-    screen:  WineList,
+    screen: WineList,
   },
 }
 
-const WineCard = StackNavigator (
+const WineCard = StackNavigator(
   {
     ...ExampleRoutes,
     Index: {
@@ -62,6 +77,7 @@ const WineCard = StackNavigator (
     initialRouteName: 'Index',
     headerMode: 'none',
     mode: Platform.OS === 'ios' ? 'modal' : 'card',
+    params: { defaultProps: defaultProps},
   },
 );
 

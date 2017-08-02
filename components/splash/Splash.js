@@ -8,7 +8,10 @@ let splash_img = require('./img/splash.png');
 class Splash extends React.Component {
 
     componentDidMount() {
-        setTimeout(() => this.nextScreen(), 1000);
+        setTimeout(() => this.nextScreen(), 1000); 
+        console.log("*");
+        console.log("*");
+        console.log("----------- Splash componentDidMount | props", this.props);
     }
 
     nextScreen() {
