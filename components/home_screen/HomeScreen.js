@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableNativeFeedback, Button, StyleSheet, Text, Image, View } from 'react-native';
+import { TouchableNativeFeedback, StyleSheet, Text, Image, View } from 'react-native';
 import { NavigationActions, StackNavigator } from 'react-navigation';
 
 let bg_img = require('./img/menuv_bg.jpg');
@@ -92,8 +92,7 @@ class HomeScreen extends React.Component {
 
                     </Image>
                 </View>
-
-                <Text style={styles.copyrigth}> © 2017 Jeneral Samopal Company</Text>
+                <Text style={styles.copyrigth}>© 2017 Jeneral Samopal Company</Text>
             </View>
         );
     }
@@ -128,7 +127,10 @@ const styles = StyleSheet.create({
     copyrigth: {
         flex: 0,
         bottom: 0,
-        fontSize: 10,
+        fontFamily: 'notoserif',
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+        fontSize: 11,
         textAlign: 'center',
         color: '#7C6F10',
         height: 20,
